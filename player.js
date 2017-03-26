@@ -5,10 +5,10 @@ button.addEventListener("click", find);
 
 
 function find() {
-  alert("CLICKED")
+  //alert("CLICKED")
 
   var name = data.value || "";
-  alert(name);
+  //alert(name);
   //data.innerHTML = "Player Name is " + name;
   var BigParserAccountEmail = "vkundetis@gmail.com"
   var BigParserAccountPassword = "Eragon01"
@@ -54,19 +54,23 @@ function find() {
             data: options,
             success: function(data){
               //var PlayerName = /*console.log('succes: '+ */data.rows[0].data[0];//);
+              if(data.rows == null) alert("Error, Player Not Found In Database");
               document.getElementById("1").innerHTML = "Name: " + data.rows[0].data[0];
               document.getElementById("2").innerHTML = "Team: " + data.rows[0].data[1];
               document.getElementById("3").innerHTML = "Age: " + data.rows[0].data[2];
               document.getElementById("4").innerHTML = "Games Played: " + data.rows[0].data[3];
-              document.getElementById("5").innerHTML = "Field Goals Made: " + data.rows[0].data[4];
-              document.getElementById("6").innerHTML = "Field Goals Att: " + data.rows[0].data[5];
-              document.getElementById("7").innerHTML = "Field Goal Percentage: " + data.rows[0].data[6];
-              document.getElementById("8").innerHTML = "Field Goal Efficency: " + data.rows[0].data[7];
-              document.getElementById("9").innerHTML = "2 pointer Field Goals Made: " + data.rows[0].data[8];
-              document.getElementById("10").innerHTML = "2 pointer Field Goal Percentage: " + data.rows[0].data[9];
-              document.getElementById("11").innerHTML = "3 pointer Field Goals Made: " + data.rows[0].data[10];
-              document.getElementById("12").innerHTML = "3 pointer Field Goals Attempted: " + data.rows[0].data[11];
-              document.getElementById("13").innerHTML = "3 pointer Field Goal Percentage: " + data.rows[0].data[12];
+              document.getElementById("5").innerHTML = "Field Goals Made: " + data.rows[0].data[5];
+              document.getElementById("6").innerHTML = "Field Goals Attempted: " + data.rows[0].data[6];
+              document.getElementById("7").innerHTML = "Field Goal Percentage: " + data.rows[0].data[7];
+              document.getElementById("8").innerHTML = "2 Pointer Frequency: " + data.rows[0].data[9];
+              document.getElementById("9").innerHTML = "2 Pointers Made: " + data.rows[0].data[10];
+              document.getElementById("10").innerHTML = "2 Pointers Attempted: " + data.rows[0].data[11];
+
+              document.getElementById("11").innerHTML = "2 Pointer Percentage: " + data.rows[0].data[12];
+              document.getElementById("12").innerHTML = "3 Pointer Frequency: " + data.rows[0].data[13];
+              document.getElementById("13").innerHTML = "3 Pointers Made: " + data.rows[0].data[14];
+              document.getElementById("14").innerHTML = "3 Pointers Attempted: " + data.rows[0].data[15];
+              document.getElementById("15").innerHTML = "3 Pointer Percentage: " + data.rows[0].data[16];
               /*var PlayerTeam = data.rows[0].data[1];
               var Age = data.rows[0].data[2];
               var GamesPlayed = data.rows[0].data[3];
