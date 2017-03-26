@@ -7,6 +7,7 @@ function find() {
   var name = PlayerName.value || "";
   data.innerHTML = "Player Name is " + name;
 }
+//var authId = "5d77c057-85bc-47aa-b66b-a520488ab806";
 ////////////////
 /*
 var xhr = new XMLHttpRequest();
@@ -23,17 +24,44 @@ alert(xhr.status);*/
 
 var BigParserAccountEmail = "vkundetis@gmail.com"
 var BigParserAccountPassword = "Eragon01"
-var request = require('request')
+var endpoint = "https://www.bigparser.com/APIServices/api/common/login/"
+var options = {
+        "emailId": BigParserAccountEmail,
+        "password": BigParserAccountPassword,
+        "loggedIn": false
+}
 
-          				var endpoint = "https://www.bigparser.com/APIServices/api/common/login"
-                        var options = {
-                            json: {
-                                "emailId": BigParserAccountEmail,
-                                "password": BigParserAccountPassword,
-                                "loggedIn": true
-                            }
-                        }
-                        request.post(endpoint, options, function(error, response, body) {
+var request = new XMLHttpRequest();
+request.onreadystatechange= function () {
+    if (request.readyState==4) {
+        console.log(request.responseText);
+    }
+}
+request.open("POST", endpoint, true);
+request.setRequestHeader("Content-Type", "application/json");
+request.setRequestHeader("Accept", "application/json");
+request.send(JSON.stringify(options));
+///////////////Start Changed Code
+/*endpoint = "https://www.bigparser.com/APIServices/api/query/table"
+options = {
+    "gridId": "58d71d8c1984570570d3c551",
+    "selectColumnsStoreName": [],
+    "keywords": ["Westbrook"],
+    "rowCount": 50,
+    "tags": [],
+    "viewId": null,
+    "sortKeys": []
+}
+request.open("GET", endpoint, true);
+request.setRequestHeader("Content-Type", "application/json");
+request.setRequestHeader("Accept", "application/json");
+request.setRequestHeader("authId", authId);
+request.send(JSON.stringify(options));*/
+
+///////////////End Changed Code
+
+
+request.post(endpoint, options, function(error, response, body) {
                             console.log(body.authId)
                             endpoint = "https://www.bigparser.com/APIServices/api/query/table"
                             options = {
